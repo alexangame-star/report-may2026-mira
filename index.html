@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Звіт за місяць — Мирослава Колєснікова</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --olive:   #3B4828;
+    --olive2:  #4d5e32;
+    --cream:   #F0E4D8;
+    --cream2:  #EBD8CB;
+    --brown:   #6A3828;
+    --brown2:  #8A5A4A;
+    --pink:    #D9ADAA;
+    --pink2:   #EBD0CB;
+    --text-d:  #2C1A10;
+    --text-m:  #7A5040;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text-d);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── DECORATIVE LINE ── */
+  .dec-line {
+    width: 60px; height: 2px;
+    background: var(--pink);
+    display: block;
+    margin: 0 auto 1.5rem;
+  }
+  .dec-line.left { margin-left: 0; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--olive);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(217,173,170,0.08);
+    top: -100px; right: -100px;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: rgba(217,173,170,0.06);
+    bottom: 40px; left: 30px;
+  }
+  .hero-left {
+    padding: 80px 60px 80px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--pink);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-label::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--pink);
+    flex-shrink: 0;
+  }
+  .hero-left h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 68px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 2rem;
+  }
+  .hero-left h1 em {
+    font-style: italic;
+    color: var(--pink);
+  }
+  .hero-left p {
+    font-size: 13px;
+    color: rgba(240,228,216,0.65);
+    line-height: 1.8;
+    max-width: 340px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-date {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--pink);
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: 1px solid rgba(217,173,170,0.35);
+    display: inline-block;
+  }
+  .hero-right {
+    background: rgba(0,0,0,0.18);
+    display: flex;
+    align-items: flex-end;
+    padding: 60px 50px;
+    position: relative;
+  }
+  .hero-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(217,173,170,0.2);
+    width: 100%;
+  }
+  .hstat {
+    background: rgba(59,72,40,0.8);
+    padding: 28px 26px;
+    transition: background .3s;
+  }
+  .hstat:hover { background: rgba(106,56,40,0.7); }
+  .hstat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hstat-num sup { font-size: 16px; }
+  .hstat-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(240,228,216,0.5);
+  }
+  .hstat-delta {
+    font-size: 11px;
+    color: #8fca8f;
+    margin-top: 4px;
+  }
+  .hstat-delta.neg { color: #e09090; }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 90px 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-full {
+    padding: 90px 70px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--pink);
+  }
+
+  h2.serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--olive);
+    margin-bottom: 1.5rem;
+  }
+  h2.serif.light { color: var(--cream); }
+
+  /* ── WHAT WE DID ── */
+  .did-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 3rem;
+  }
+  .did-card {
+    background: white;
+    padding: 40px 36px;
+    border-top: 3px solid var(--pink2);
+    transition: border-color .3s, transform .2s;
+  }
+  .did-card:hover { border-color: var(--brown); transform: translateY(-3px); }
+  .did-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--olive);
+    margin-bottom: 1rem;
+  }
+  .did-card p {
+    font-size: 14px;
+    color: var(--text-m);
+    line-height: 1.75;
+  }
+
+  /* ── CONTENT TOP ── */
+  .top-posts {
+    margin-top: 3rem;
+    border: 1px solid var(--pink2);
+  }
+  .top-post-row {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--pink2);
+    transition: background .2s;
+  }
+  .top-post-row:last-child { border-bottom: none; }
+  .top-post-row:hover { background: rgba(217,173,170,0.12); }
+  .post-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--pink);
+    font-weight: 600;
+  }
+  .post-title {
+    font-size: 14px;
+    color: var(--text-d);
+  }
+  .post-views {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--olive);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── WEBINAR ── */
+  .webinar-section {
+    background: var(--olive);
+    padding: 90px 70px;
+  }
+  .webinar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .webinar-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .wm {
+    background: rgba(240,228,216,0.07);
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 2px solid transparent;
+    transition: border-color .3s;
+  }
+  .wm:hover { border-left-color: var(--pink); }
+  .wm-label { font-size: 12px; color: rgba(240,228,216,0.55); text-transform: uppercase; letter-spacing: 1.5px; }
+  .wm-val { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--cream); font-weight: 700; }
+
+  /* ── GOOD / BAD ── */
+  .eval-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-top: 3rem;
+  }
+  .eval-card {
+    padding: 44px 40px;
+  }
+  .eval-card.good { background: var(--olive); }
+  .eval-card.bad  { background: var(--brown); }
+  .eval-tag {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    display: inline-block;
+    margin-bottom: 1.8rem;
+  }
+  .eval-card.good .eval-tag { background: rgba(217,173,170,0.2); color: var(--pink); }
+  .eval-card.bad  .eval-tag { background: rgba(240,228,216,0.12); color: var(--cream2); }
+  .eval-card ul { list-style: none; }
+  .eval-card ul li {
+    font-size: 14px;
+    color: rgba(240,228,216,0.88);
+    line-height: 1.75;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding-left: 20px;
+    position: relative;
+  }
+  .eval-card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+    font-size: 12px;
+  }
+  .eval-card ul li:last-child { border-bottom: none; }
+
+  /* ── SERVICES ── */
+  .services-wrap {
+    background: var(--cream2);
+    padding: 90px 70px;
+  }
+  .services-inner { max-width: 1200px; margin: 0 auto; }
+  .service-block {
+    margin-top: 3.5rem;
+    background: white;
+    padding: 50px 50px 44px;
+    border-top: 4px solid var(--olive);
+  }
+  .service-block + .service-block { margin-top: 2px; border-top-color: var(--brown); }
+  .sb-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .sb-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--olive);
+  }
+  .sb-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--brown);
+    white-space: nowrap;
+  }
+  .sb-price span { font-size: 14px; font-family: 'Jost', sans-serif; font-weight: 400; color: var(--text-m); }
+  .sb-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .sb-item {
+    background: var(--cream);
+    padding: 16px 18px;
+    font-size: 13px;
+    color: var(--text-d);
+    line-height: 1.6;
+    border-left: 2px solid var(--pink);
+  }
+  .sb-item strong { display: block; font-weight: 600; margin-bottom: 3px; color: var(--olive); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* bundle */
+  .bundle-box {
+    margin-top: 2px;
+    background: var(--olive);
+    padding: 40px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .bundle-box .bb-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--cream);
+    font-weight: 600;
+  }
+  .bundle-box .bb-sub { font-size: 12px; color: rgba(240,228,216,0.55); margin-top: 4px; }
+  .bundle-price {
+    text-align: right;
+  }
+  .bundle-price .bp-new {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--pink);
+    line-height: 1;
+  }
+  .bundle-price .bp-old {
+    font-size: 13px;
+    color: rgba(240,228,216,0.4);
+    text-decoration: line-through;
+  }
+
+  /* ── COSTS ── */
+  .costs-section {
+    padding: 90px 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .costs-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .cost-card {
+    background: var(--brown);
+    padding: 36px 32px;
+    color: var(--cream);
+  }
+  .cost-card.alt { background: var(--olive); }
+  .cc-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 1rem; }
+  .cc-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .cc-desc { font-size: 12px; color: rgba(240,228,216,0.6); line-height: 1.6; }
+
+  /* ── MINICOURSE ── */
+  .minicourse-section {
+    background: var(--olive);
+    padding: 90px 70px;
+  }
+  .mc-inner { max-width: 1200px; margin: 0 auto; }
+  .mc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-top: 3rem;
+  }
+  .mc-card {
+    padding: 44px 40px;
+    background: rgba(240,228,216,0.06);
+    border-top: 2px solid transparent;
+    transition: border-color .3s;
+  }
+  .mc-card:hover { border-color: var(--pink); }
+  .mc-scenario {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 1.5rem;
+  }
+  .mc-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; color: var(--cream); font-weight: 600; margin-bottom: 1.2rem;
+  }
+  .mc-rows { display: flex; flex-direction: column; gap: 10px; }
+  .mc-row {
+    display: flex; justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 13px;
+    color: rgba(240,228,216,0.7);
+  }
+  .mc-row:last-child { border-bottom: none; }
+  .mc-row .mval { color: var(--cream); font-weight: 500; }
+  .mc-result {
+    margin-top: 1.5rem;
+    padding: 16px 20px;
+    background: rgba(217,173,170,0.12);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--pink);
+    font-weight: 600;
+  }
+
+  /* ── PLAN ── */
+  .plan-section {
+    padding: 90px 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .plan-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-top: 3rem;
+  }
+  .plan-card {
+    background: white;
+    padding: 30px 24px 36px;
+    border-bottom: 3px solid var(--pink2);
+    transition: border-color .3s, transform .2s;
+  }
+  .plan-card:hover { border-color: var(--olive); transform: translateY(-4px); }
+  .plan-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--pink2);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .plan-card h4 { font-size: 13px; font-weight: 600; color: var(--olive); margin-bottom: .7rem; text-transform: uppercase; letter-spacing: .5px; }
+  .plan-card p { font-size: 12px; color: var(--text-m); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-d);
+    padding: 50px 70px;
+    text-align: center;
+  }
+  footer p { font-size: 11px; color: rgba(240,228,216,0.35); letter-spacing: 2px; text-transform: uppercase; }
+  footer .ft-handle { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--pink); margin-bottom: 8px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { min-height: 320px; align-items: center; }
+    .hero-stats-grid { grid-template-columns: 1fr 1fr; }
+    .section, .section-full, .services-wrap, .webinar-section,
+    .minicourse-section, .costs-section, .plan-section, footer {
+      padding-left: 24px; padding-right: 24px;
+    }
+    .hero-left { padding: 60px 24px 40px; }
+    .hero-right { padding: 30px 24px 40px; }
+    .did-grid, .eval-grid, .mc-grid, .webinar-inner { grid-template-columns: 1fr; gap: 2px; }
+    .plan-grid { grid-template-columns: 1fr 1fr; }
+    .costs-grid { grid-template-columns: 1fr; }
+    .sb-list { grid-template-columns: 1fr; }
+    .bundle-box { flex-direction: column; }
+    .bundle-price { text-align: left; }
+  }
+  @media (max-width: 520px) {
+    .plan-grid { grid-template-columns: 1fr; }
+    .hero-stats-grid { grid-template-columns: 1fr; }
+    .hstat-num { font-size: 28px; }
+    h2.serif { font-size: 26px; }
+  }
+
+  /* ── FADE IN ── */
+  .fade { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .fade.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Звіт про роботу</div>
+    <h1>Підсумки<br><em>місяця</em></h1>
+    <p>Аналіз результатів, що зроблено, що працює і що потрібно посилити для виходу на наступний рівень.</p>
+    <div class="hero-date">15 квітня — 24 травня 2026</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats-grid">
+      <div class="hstat">
+        <div class="hstat-num">63 742</div>
+        <div class="hstat-label">Перегляди</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">6 729</div>
+        <div class="hstat-label">Охоплені акаунти</div>
+        <div class="hstat-delta neg">–29,6%</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">1 663</div>
+        <div class="hstat-label">Відвідування профілю</div>
+        <div class="hstat-delta">+45,7% ↑</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">1 100<sup>+</sup></div>
+        <div class="hstat-label">Взаємодії</div>
+        <div class="hstat-delta">↑ зростання</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">3 385</div>
+        <div class="hstat-label">Підписників</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">1 682</div>
+        <div class="hstat-label">Дії в профілі</div>
+        <div class="hstat-delta">+45,4% ↑</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ЩО РОБИЛИ ══ -->
+<div class="section fade">
+  <div class="eyebrow">Цей місяць</div>
+  <h2 class="serif">Що робили</h2>
+  <p style="max-width:620px; color:var(--text-m); font-size:14px;">
+    Фокус місяця — системна упаковка сторінки та перший вебінар. Будували фундамент: контент, що продає, і профіль, якому довіряють.
+  </p>
+  <div class="did-grid">
+    <div class="did-card">
+      <h3>Instagram-контент</h3>
+      <p>Розробили і вели контент-план: регулярні публікації в різних форматах (reels, каруселі, пости, сторіс). Опрацювали рубрики, теми та подачу під цільову аудиторію.</p>
+    </div>
+    <div class="did-card">
+      <h3>Вебінар «Що подумають люди?»</h3>
+      <p>Розробили програму, оформили презентацію у фірмових кольорах, провели перший ефір на теплу аудиторію. Пілот підтвердив: тема резонує, формат робочий.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ТОП КОНТЕНТ ══ -->
+<div class="section fade" style="padding-top:0;">
+  <div class="eyebrow">Контент</div>
+  <h2 class="serif">Топ публікацій місяця</h2>
+  <div class="top-posts">
+    <div class="top-post-row">
+      <div class="post-num">01</div>
+      <div class="post-title">«Я цінна: кордони і самооцінка» <span style="color:var(--brown2); font-size:12px;">↑ у зростанні</span></div>
+      <div class="post-views">3 998</div>
+    </div>
+    <div class="top-post-row">
+      <div class="post-num">02</div>
+      <div class="post-title">«Ви плутаєте спрагу з голодом» <span style="color:var(--text-m); font-size:12px;">54% нова аудиторія</span></div>
+      <div class="post-views">3 107</div>
+    </div>
+    <div class="top-post-row">
+      <div class="post-num">03</div>
+      <div class="post-title">«Техніка червоного трамваю»</div>
+      <div class="post-views">2 550</div>
+    </div>
+    <div class="top-post-row">
+      <div class="post-num">04</div>
+      <div class="post-title">«12 фактів про мене»</div>
+      <div class="post-views">2 204</div>
+    </div>
+    <div class="top-post-row">
+      <div class="post-num">05</div>
+      <div class="post-title">«Це те, що тобі варто почути сьогодні»</div>
+      <div class="post-views">1 847</div>
+    </div>
+    <div class="top-post-row">
+      <div class="post-num">06</div>
+      <div class="post-title">«Як їсти і худнути?»</div>
+      <div class="post-views">1 527</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ВЕБІНАР ══ -->
+<section class="webinar-section fade">
+  <div class="webinar-inner">
+    <div>
+      <div class="eyebrow" style="color:var(--pink);">Вебінар</div>
+      <h2 class="serif light">«Що подумають люди?»</h2>
+      <p style="color:rgba(240,228,216,0.65); font-size:14px; line-height:1.8; margin-bottom:1.5rem;">
+        Перший ефір на теплу аудиторію. Тема сильна, матеріал якісний, вебінар проведено без реклами — виключно через органічне промо в сторіс. Це пілот, що підтвердив: тема резонує і люди готові приходити.
+      </p>
+      <p style="color:rgba(240,228,216,0.45); font-size:13px;">
+        Обмеження охоплення — відсутність платного трафіку. Наступний ефір виходимо на холодну аудиторію через рекламу.
+      </p>
+    </div>
+    <div class="webinar-metrics">
+      <div class="wm">
+        <div class="wm-label">Реєстрацій зі сторіс</div>
+        <div class="wm-val">11</div>
+      </div>
+      <div class="wm">
+        <div class="wm-label">Людей на ефірі</div>
+        <div class="wm-val">3</div>
+      </div>
+      <div class="wm">
+        <div class="wm-label">Трафік</div>
+        <div class="wm-val" style="font-size:16px; letter-spacing:1px;">Органіка</div>
+      </div>
+      <div class="wm">
+        <div class="wm-label">Тема</div>
+        <div class="wm-val" style="font-size:16px; letter-spacing:.5px;">Підтверджена ✓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ДОБРЕ / НЕ ДОБРЕ ══ -->
+<div class="section-full fade" style="background:var(--cream2); padding: 0;">
+  <div style="max-width:1200px; margin:0 auto; padding: 90px 70px;">
+    <div class="eyebrow">Аналіз місяця</div>
+    <h2 class="serif">Що вийшло — що потребує уваги</h2>
+  </div>
+  <div class="eval-grid" style="max-width:1200px; margin: 0 auto; padding: 0 70px 90px;">
+    <div class="eval-card good">
+      <div class="eval-tag">Що вийшло добре</div>
+      <ul>
+        <li>Відвідуваність профілю зросла на <strong>+45,7%</strong> — упаковка працює</li>
+        <li>Зі слів Мирослави: клієнти краще реагують на сторінку, є записи через рекомендації</li>
+        <li>Reels «Ви плутаєте спрагу з голодом» зібрав 3 107 переглядів, 54% — нові люди</li>
+        <li>Пост «Я цінна: кордони і самооцінка» набирає перегляди і досі в зростанні</li>
+        <li>Контент виходив регулярно, з'явились чіткі рубрики</li>
+        <li>Перший вебінар проведено, тема підтверджена аудиторією</li>
+        <li>Дії в профілі: <strong>+45,4%</strong> до попереднього місяця</li>
+      </ul>
+    </div>
+    <div class="eval-card bad">
+      <div class="eval-tag">Що потребує уваги</div>
+      <ul>
+        <li>Охоплення впало на <strong>–29,6%</strong> — органіки недостатньо для росту</li>
+        <li>Баланс підписників у мінусі: +23 нових проти –90 відписок</li>
+        <li>Вебінар: лише 3 людини на ефірі без реклами — конверсія з органіки слабка</li>
+        <li>Кліків на зовнішнє посилання лише 19 — воронка ще не в повну силу</li>
+        <li>Не запущено платний трафік — зростання залежить тільки від алгоритмів</li>
+        <li>Немає міні-продукту для монетизації нової аудиторії</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ПОСЛУГИ ══ -->
+<section class="services-wrap fade">
+  <div class="services-inner">
+    <div class="eyebrow">Наступний місяць</div>
+    <h2 class="serif">Послуги та умови співпраці</h2>
+
+    <!-- КОНТЕНТ -->
+    <div class="service-block">
+      <div class="sb-head">
+        <div>
+          <div class="sb-title">Ведення Instagram</div>
+          <div style="font-size:12px; color:var(--text-m); margin-top:4px;">Контент під ключ — від стратегії до постингу</div>
+        </div>
+        <div class="sb-price">500$ <span>/ місяць</span></div>
+      </div>
+      <div class="sb-list">
+        <div class="sb-item">
+          <strong>Контент-план</strong>
+          Місячний план публікацій із темами, форматами та цілями кожної одиниці контенту
+        </div>
+        <div class="sb-item">
+          <strong>Розробка візуалу</strong>
+          Дизайн обкладинок, каруселей, шаблонів reels у фірмових кольорах та стилі бренду
+        </div>
+        <div class="sb-item">
+          <strong>Написання текстів</strong>
+          Тексти до постів, підписи, заклики до дії — під голос і стиль Мирослави
+        </div>
+        <div class="sb-item">
+          <strong>Сценарії для сторіс</strong>
+          Щотижневі сценарії прогріву, продажів, особистого контенту та залучення до дії
+        </div>
+        <div class="sb-item">
+          <strong>Постинг — 25–30 публікацій</strong>
+          Розміщення контенту у оптимальний час, включно з reels, каруселями та сторіс
+        </div>
+        <div class="sb-item">
+          <strong>Аналітика та звіт</strong>
+          Щомісячний звіт із цифрами, висновками та рекомендаціями
+        </div>
+      </div>
+    </div>
+
+    <!-- ТАРГЕТ -->
+    <div class="service-block">
+      <div class="sb-head">
+        <div>
+          <div class="sb-title">Таргетована реклама</div>
+          <div style="font-size:12px; color:var(--text-m); margin-top:4px;">Повна побудова та ведення рекламної воронки</div>
+        </div>
+        <div class="sb-price">500$ <span>/ місяць</span></div>
+      </div>
+      <div class="sb-list">
+        <div class="sb-item">
+          <strong>Побудова воронки продажів</strong>
+          Структура трафіку від першого дотику до заявки: холодна аудиторія → прогрів → конверсія
+        </div>
+        <div class="sb-item">
+          <strong>Розробка рекламних креативів</strong>
+          Візуали та тексти для оголошень під кожен етап воронки і сегмент аудиторії
+        </div>
+        <div class="sb-item">
+          <strong>Налаштування та запуск</strong>
+          Технічне налаштування кабінету, аудиторій, цілей і розміщень під конкретні задачі
+        </div>
+        <div class="sb-item">
+          <strong>Ведення та оптимізація</strong>
+          Щотижневий моніторинг кампаній, вимкнення неефективних оголошень, масштабування
+        </div>
+        <div class="sb-item">
+          <strong>A/B тестування</strong>
+          Тестування заголовків, візуалів та аудиторій для зниження вартості результату
+        </div>
+        <div class="sb-item">
+          <strong>Аналітика та звітність</strong>
+          Регулярні звіти з CPL, CTR, ROI та рекомендаціями на наступний тиждень
+        </div>
+      </div>
+    </div>
+
+    <!-- BUNDLE -->
+    <div class="bundle-box">
+      <div>
+        <div class="bb-title">Пакет «Під ключ» — контент + таргет</div>
+        <div class="bb-sub">Обидві послуги разом з єдиною стратегією і синергією між контентом та рекламою</div>
+      </div>
+      <div class="bundle-price">
+        <div class="bp-old">1 000$ окремо</div>
+        <div class="bp-new">700$</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ ВИТРАТИ ══ -->
+<section class="fade" style="background:var(--cream);">
+  <div class="costs-section">
+    <div class="eyebrow">Додаткові витрати</div>
+    <h2 class="serif">Оплачуються окремо</h2>
+    <p style="max-width:580px; color:var(--text-m); font-size:14px; margin-top:1rem;">
+      Ці витрати не входять у вартість послуг і необхідні для запуску трафіку та технічної воронки.
+    </p>
+    <div class="costs-grid">
+      <div class="cost-card alt">
+        <div class="cc-label">Технічна частина</div>
+        <div class="cc-val">250–350$</div>
+        <div class="cc-desc">Розробка лендінгу та/або форми реєстрації. Разова оплата — повністю готова посадкова сторінка з інтеграціями.</div>
+      </div>
+      <div class="cost-card">
+        <div class="cc-label">Рекламний бюджет</div>
+        <div class="cc-val">400–500$</div>
+        <div class="cc-desc">Щомісячний бюджет на просування в Meta Ads. Мінімальний поріг для стабільного результату та тестування.</div>
+      </div>
+      <div class="cost-card alt">
+        <div class="cc-label">Всього додатково</div>
+        <div class="cc-val">650–850$</div>
+        <div class="cc-desc">Одноразові та операційні витрати на місяць активного трафіку та запуску воронки.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ МІНІ-КУРС ══ -->
+<section class="minicourse-section fade">
+  <div class="mc-inner">
+    <div class="eyebrow">Міні-продукт</div>
+    <h2 class="serif light">Фінансова логіка міні-курсу</h2>
+    <p style="color:rgba(240,228,216,0.6); font-size:14px; max-width:640px; margin-top:.5rem;">
+      Ціна міні-курсу: <strong style="color:var(--pink);">9–15$</strong>. Головна мета — зібрати базу покупців і конвертувати їх у консультації. Реклама окупається самим продуктом, а далі починається реальний заробіток.
+    </p>
+    <div class="mc-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="mc-card">
+        <div class="mc-scenario">Сценарій мінімум — Окупність ×1</div>
+        <h3>Вийти в нуль</h3>
+        <div class="mc-rows">
+          <div class="mc-row"><span>Бюджет на трафік</span><span class="mval">400$</span></div>
+          <div class="mc-row"><span>Ціна міні-курсу</span><span class="mval">9–15$</span></div>
+          <div class="mc-row"><span>Потрібно продажів</span><span class="mval">27–45 шт</span></div>
+          <div class="mc-row"><span>Вартість клієнта</span><span class="mval">= ціна курсу</span></div>
+          <div class="mc-row"><span>Прибуток з курсу</span><span class="mval">0$</span></div>
+        </div>
+        <div class="mc-result">База покупців · реклама безкоштовна</div>
+      </div>
+      <div class="mc-card">
+        <div class="mc-scenario">Сценарій норма — Окупність ×1,5</div>
+        <h3>Ціна клієнта ~6–10$</h3>
+        <div class="mc-rows">
+          <div class="mc-row"><span>Бюджет на трафік</span><span class="mval">400$</span></div>
+          <div class="mc-row"><span>Дохід від курсу</span><span class="mval">600$</span></div>
+          <div class="mc-row"><span>Потрібно продажів</span><span class="mval">40–67 шт</span></div>
+          <div class="mc-row"><span>Вартість клієнта</span><span class="mval">6–10$</span></div>
+          <div class="mc-row"><span>Прибуток з курсу</span><span class="mval">+200$</span></div>
+        </div>
+        <div class="mc-result">База 40–67 чол. · +200$ в плюс</div>
+      </div>
+      <div class="mc-card">
+        <div class="mc-scenario">Сценарій максимум — Окупність ×2</div>
+        <h3>Ціна клієнта ~4,5–7,5$</h3>
+        <div class="mc-rows">
+          <div class="mc-row"><span>Бюджет на трафік</span><span class="mval">400$</span></div>
+          <div class="mc-row"><span>Дохід від курсу</span><span class="mval">800$</span></div>
+          <div class="mc-row"><span>Потрібно продажів</span><span class="mval">53–89 шт</span></div>
+          <div class="mc-row"><span>Вартість клієнта</span><span class="mval">4,5–7,5$</span></div>
+          <div class="mc-row"><span>Прибуток з курсу</span><span class="mval">+400$</span></div>
+        </div>
+        <div class="mc-result">База до 90 чол. · +400$ в плюс</div>
+      </div>
+    </div>
+
+    <!-- Конверсія в консультацію -->
+    <div style="margin-top:3px; background:rgba(240,228,216,0.06); padding:36px 40px;">
+      <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--pink); margin-bottom:1.2rem;">Наступний крок — консультація 50–70$</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:3px;">
+        <div style="background:rgba(0,0,0,0.2); padding:24px 22px;">
+          <div style="font-size:11px; color:rgba(240,228,216,0.45); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:.6rem;">Конверсія 5%</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--cream);">2–4 конс.</div>
+          <div style="font-size:13px; color:var(--pink); margin-top:4px;">100–280$</div>
+          <div style="font-size:11px; color:rgba(240,228,216,0.35); margin-top:4px;">консервативно</div>
+        </div>
+        <div style="background:rgba(217,173,170,0.15); padding:24px 22px; border:1px solid rgba(217,173,170,0.25);">
+          <div style="font-size:11px; color:rgba(240,228,216,0.45); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:.6rem;">Конверсія 10%</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--cream);">4–9 конс.</div>
+          <div style="font-size:13px; color:var(--pink); margin-top:4px;">200–630$</div>
+          <div style="font-size:11px; color:rgba(240,228,216,0.35); margin-top:4px;">реалістично</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.2); padding:24px 22px;">
+          <div style="font-size:11px; color:rgba(240,228,216,0.45); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:.6rem;">Конверсія 15%</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--cream);">6–13 конс.</div>
+          <div style="font-size:13px; color:var(--pink); margin-top:4px;">300–910$</div>
+          <div style="font-size:11px; color:rgba(240,228,216,0.35); margin-top:4px;">при сильному прогріві</div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:rgba(240,228,216,0.4); margin-top:1rem;">
+        * База 40–90 покупців міні-курсу × конверсія в консультацію 50–70$ / люди, що вже заплатили — найтепліший сегмент
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ ПЛАН ══ -->
+<section class="plan-section fade">
+  <div class="eyebrow">Наступний місяць</div>
+  <h2 class="serif">5 напрямків роботи</h2>
+  <p style="max-width:600px; color:var(--text-m); font-size:14px; margin-top:.5rem;">
+    Фокус: нова аудиторія, прогрів і перші продажі через платні інструменти.
+  </p>
+  <div class="plan-grid">
+    <div class="plan-card">
+      <div class="plan-num">01</div>
+      <h4>Instagram — продовжуємо</h4>
+      <p>Регулярний контент, акцент на Reels для нової аудиторії. Теми болів, швидкі техніки, особисті історії.</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-num">02</div>
+      <h4>Міні-продукт</h4>
+      <p>Запускаємо перший платний продукт. Мета: зібрати базу покупців і конвертувати у консультації.</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-num">03</div>
+      <h4>Лід-магніти</h4>
+      <p>1–2 безкоштовних матеріали для залучення цільових людей у підписники та в базу.</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-num">04</div>
+      <h4>Трафік на консультації</h4>
+      <p>Реклама з метою запису на офлайн-консультацію. Окрема посадкова або директ-форма.</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-num">05</div>
+      <h4>Ефір на холодну</h4>
+      <p>Наступний вебінар з рекламним бюджетом — виходимо за межі поточної аудиторії.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ВИСНОВКИ ══ -->
+<section class="fade" style="background:var(--cream2); padding:90px 70px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="eyebrow">Висновки</div>
+    <h2 class="serif">Що бачимо чітко</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:2.5rem;">
+      <div style="background:var(--olive); padding:44px 40px;">
+        <div style="font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--pink); background:rgba(217,173,170,0.15); display:inline-block; padding:5px 12px; margin-bottom:1.5rem;">Плюси місяця</div>
+        <ul style="list-style:none;">
+          <li style="font-size:14px; color:rgba(240,228,216,0.9); padding:10px 0 10px 20px; border-bottom:1px solid rgba(255,255,255,0.07); position:relative;"><span style="position:absolute;left:0;color:var(--pink);">✓</span> Профіль почав конвертувати — є реальні записи через рекомендації</li>
+          <li style="font-size:14px; color:rgba(240,228,216,0.9); padding:10px 0 10px 20px; border-bottom:1px solid rgba(255,255,255,0.07); position:relative;"><span style="position:absolute;left:0;color:var(--pink);">✓</span> Відвідуваність сторінки +45,7% — упаковка і контент працюють</li>
+          <li style="font-size:14px; color:rgba(240,228,216,0.9); padding:10px 0 10px 20px; border-bottom:1px solid rgba(255,255,255,0.07); position:relative;"><span style="position:absolute;left:0;color:var(--pink);">✓</span> Контент виходить регулярно, є чіткий стиль і рубрики</li>
+          <li style="font-size:14px; color:rgba(240,228,216,0.9); padding:10px 0 10px 20px; position:relative;"><span style="position:absolute;left:0;color:var(--pink);">✓</span> Вебінар підтвердив тему — аудиторія реагує, формат готовий до масштабування</li>
+        </ul>
+      </div>
+      <div style="background:var(--brown); padding:44px 40px;">
+        <div style="font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--cream2); background:rgba(240,228,216,0.1); display:inline-block; padding:5px 12px; margin-bottom:1.5rem;">Що стримує ріст</div>
+        <ul style="list-style:none;">
+          <li style="font-size:14px; color:rgba(240,228,216,0.9); padding:10px 0 10px 20px; border-bottom:1px solid rgba(255,255,255,0.07); position:relative;"><span style="position:absolute;left:0;color:var(--pink);">→</span> Без платного трафіку охоплення падає — органіки не вистачає для стабільного росту</li>
+          <li style="font-size:14px; color:rgba(240,228,216,0.9); padding:10px 0 10px 20px; border-bottom:1px solid rgba(255,255,255,0.07); position:relative;"><span style="position:absolute;left:0;color:var(--pink);">→</span> Немає продукту для монетизації — нова аудиторія приходить і йде без покупки</li>
+          <li style="font-size:14px; color:rgba(240,228,216,0.9); padding:10px 0 10px 20px; position:relative;"><span style="position:absolute;left:0;color:var(--pink);">→</span> Воронка не збудована — люди не ведуться до консультації по чіткому маршруту</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Головний висновок -->
+    <div style="margin-top:3px; background:var(--text-d); padding:44px 50px; display:flex; align-items:center; gap:3rem; flex-wrap:wrap;">
+      <div style="flex:1; min-width:260px;">
+        <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--pink); margin-bottom:1rem;">Головний висновок</div>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--cream); font-weight:600; line-height:1.4;">
+          Без трафіку і продовження ведення сторінки швидко зростати і виходити на стабільний, прогнозований дохід буде важко.
+        </p>
+        <p style="font-size:13px; color:rgba(240,228,216,0.5); margin-top:1rem; line-height:1.7;">
+          База є. Контент працює. Тепер потрібна система, яка перетворює охоплення на гроші.
+        </p>
+      </div>
+      <div style="width:2px; background:rgba(217,173,170,0.2); align-self:stretch; flex-shrink:0;"></div>
+      <div style="flex:1; min-width:260px;">
+        <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--pink); margin-bottom:1rem;">Ми готові це зробити разом</div>
+        <p style="font-size:13px; color:rgba(240,228,216,0.6); line-height:1.8;">
+          Наступний місяць — перші реальні продажі та окупність вкладень. Місяць 3–6 — масштабування, нові продукти, прогнозований дохід з онлайн-напрямку.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ПРОГНОЗ ДОХОДУ ══ -->
+<section class="fade" style="background:var(--olive); padding:90px 70px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="eyebrow">Фінансовий прогноз</div>
+    <h2 class="serif light">Що реально заробити вже в 1-й місяць</h2>
+    <p style="color:rgba(240,228,216,0.55); font-size:14px; max-width:580px; margin-top:.5rem;">При запуску трафіку, міні-курсу та конверсії у консультації.</p>
+
+    <div style="margin-top:2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3px;">
+      <!-- місяць 1 -->
+      <div style="background:rgba(240,228,216,0.06); padding:40px 38px; border-top:2px solid var(--pink);">
+        <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--pink); margin-bottom:1.5rem;">Місяць 1 — Запуск</div>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:1.5rem;">
+          <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:13px; color:rgba(240,228,216,0.7);">
+            <span>Міні-курс (при ×1,5–2)</span><span style="color:var(--cream); font-weight:500;">200–400$</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:13px; color:rgba(240,228,216,0.7);">
+            <span>Консультації 50–70$ (5–10%)</span><span style="color:var(--cream); font-weight:500;">150–450$</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:13px; color:rgba(240,228,216,0.7);">
+            <span>Разом дохід</span><span style="color:var(--cream); font-weight:500;">350–850$</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:10px 0; font-size:13px; color:rgba(240,228,216,0.7);">
+            <span>Витрати (пакет 700$ + бюджет 400$)</span><span style="color:rgba(240,228,216,0.5);">1 100$</span>
+          </div>
+        </div>
+        <div style="background:rgba(217,173,170,0.12); padding:16px 20px; font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--pink);">
+          Мета: окупити витрати і зібрати базу для масштабування
+        </div>
+      </div>
+
+      <!-- місяць 3-6 -->
+      <div style="background:rgba(240,228,216,0.06); padding:40px 38px; border-top:2px solid rgba(217,173,170,0.4);">
+        <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--pink); margin-bottom:1.5rem;">Місяць 3–6 — Масштабування</div>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:1.5rem;">
+          <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:13px; color:rgba(240,228,216,0.7);">
+            <span>Накопичена база покупців</span><span style="color:var(--cream); font-weight:500;">150–300+ чол.</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:13px; color:rgba(240,228,216,0.7);">
+            <span>Консультації + пакети</span><span style="color:var(--cream); font-weight:500;">800–2 000$</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:13px; color:rgba(240,228,216,0.7);">
+            <span>Новий продукт вищого чеку</span><span style="color:var(--cream); font-weight:500;">+ від 500$</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:10px 0; font-size:13px; color:rgba(240,228,216,0.7);">
+            <span>Прогнозований місячний дохід</span><span style="color:var(--cream); font-weight:500;">1 500–3 000$+</span>
+          </div>
+        </div>
+        <div style="background:rgba(217,173,170,0.12); padding:16px 20px; font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--pink);">
+          Стабільний дохід з онлайн-напрямку + нові продукти
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ПЛАН ══ -->
+<section class="plan-section fade">
+  <div class="eyebrow">Наступний місяць</div>
+  <h2 class="serif">5 напрямків роботи</h2>
+  <p style="max-width:600px; color:var(--text-m); font-size:14px; margin-top:.5rem;">
+    Фокус: нова аудиторія, прогрів і перші продажі через платні інструменти.
+  </p>
+  <div class="plan-grid">
+    <div class="plan-card">
+      <div class="plan-num">01</div>
+      <h4>Instagram — продовжуємо</h4>
+      <p>Регулярний контент, акцент на Reels для нової аудиторії. Теми болів, швидкі техніки, особисті історії.</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-num">02</div>
+      <h4>Міні-продукт</h4>
+      <p>Запускаємо перший платний продукт. Мета: зібрати базу покупців і конвертувати у консультації.</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-num">03</div>
+      <h4>Лід-магніти</h4>
+      <p>1–2 безкоштовних матеріали для залучення цільових людей у підписники та в базу.</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-num">04</div>
+      <h4>Трафік на консультації</h4>
+      <p>Реклама з метою запису на офлайн-консультацію. Окрема посадкова або директ-форма.</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-num">05</div>
+      <h4>Ефір на холодну</h4>
+      <p>Наступний вебінар з рекламним бюджетом — виходимо за межі поточної аудиторії.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="fade" style="background:var(--text-d); padding:100px 70px; text-align:center;">
+  <div style="max-width:700px; margin:0 auto;">
+    <div style="width:40px; height:1px; background:var(--pink); margin:0 auto 2rem;"></div>
+    <div style="font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--pink); margin-bottom:1.5rem;">Разом до результату</div>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,48px); font-weight:600; color:var(--cream); line-height:1.25; margin-bottom:1.5rem;">
+      Готові зробити наступний місяць<br><em style="color:var(--pink); font-style:italic;">першим прибутковим</em>
+    </h2>
+    <p style="font-size:14px; color:rgba(240,228,216,0.5); line-height:1.8; margin-bottom:3rem;">
+      Фундамент закладено. Тепер час будувати систему, яка приносить дохід. Перший місяць — окупність витрат і база. Місяць 3–6 — масштабування і нові продукти.
+    </p>
+    <div style="width:40px; height:1px; background:rgba(217,173,170,0.3); margin:0 auto;"></div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="ft-handle">@mira_koliesnikova</div>
+  <p>Звіт підготовлено · 24 травня 2026</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
